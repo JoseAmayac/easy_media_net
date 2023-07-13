@@ -8,6 +8,8 @@ import { SharedModule } from '../shared/shared.module';
 import { PostsLayoutComponent } from './components/posts-layout/posts-layout.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { FormsModule } from '@angular/forms';
+import { MyPostsComponent } from './components/my-posts/my-posts.component';
+import { FiltersComponent } from './components/filters/filters.component';
 
 
 
@@ -17,7 +19,9 @@ import { FormsModule } from '@angular/forms';
     PostCardComponent,
     PostsDashboardComponent,
     PostsLayoutComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    MyPostsComponent,
+    FiltersComponent
   ],
   imports: [
     CommonModule,

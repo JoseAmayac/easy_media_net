@@ -1,15 +1,14 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { Post } from '../../interfaces/post';
 import { PostService } from '../../services/post.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Post } from '../../interfaces/post';
-import { PostFilter } from '../../interfaces/post-filter';
 
 @Component({
-  selector: 'app-all-posts',
-  templateUrl: './all-posts.component.html',
-  styleUrls: ['./all-posts.component.scss']
+  selector: 'app-my-posts',
+  templateUrl: './my-posts.component.html',
+  styleUrls: ['./my-posts.component.scss']
 })
-export class AllPostsComponent implements OnInit{
+export class MyPostsComponent implements OnInit{
   posts: Post[] = [];
   isLoading: boolean = false;
   error?: string;
@@ -17,12 +16,11 @@ export class AllPostsComponent implements OnInit{
   private postService = inject( PostService );
 
   ngOnInit(): void {
-    this.loadAllPosts()
+      this.loadMyPosts();
   }
 
-  loadAllPosts(): void{
-    this.isLoading = true;
-    this.postService.getAllPosts().subscribe({
+  loadMyPosts(): void{
+    this.postService.getMyPosts().subscribe({
       next: ( posts ) => this.handleCorrectLoad( posts ),
       error: ( err ) =>  this.handleErrorLoad( err )
     });
@@ -35,12 +33,5 @@ export class AllPostsComponent implements OnInit{
   handleErrorLoad( err: HttpErrorResponse ){
     this.isLoading = false;
     this.error = err.error.message || 'Server error';
-  }
-
-  filterPosts(filters: PostFilter){
-    this.postService.filterPosts( filters ).subscribe({
-      next: ( posts ) => this.handleCorrectLoad( posts ),
-      error: ( err ) =>  this.handleErrorLoad( err )
-    });
   }
 }

@@ -7,3 +7,8 @@ export interface Post {
   createdAt: Date;
   author: User;
 }
+
+export interface PostCreation{
+  title: string;
+  message: string;
+}

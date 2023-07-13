@@ -1,9 +1,31 @@
 <h1 class="text-center text-white page-title mt-3">
   Create message
 </h1>
+<app-modal *ngIf="created && !isSending">
+  <div class="created text-center">
+    <svg width="90" height="90" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M37.9142 0C17.0235 0 0 17.0235 0 37.9142C0 58.8049 17.0235 75.8283 37.9142 75.8283C58.8049 75.8283 75.8283 58.8049 75.8283 37.9142C75.8283 17.0235 58.8049 0 37.9142 0ZM56.0371 29.1939L34.5398 50.6912C34.009 51.222 33.2886 51.5253 32.5303 51.5253C31.7721 51.5253 31.0517 51.222 30.5209 50.6912L19.7912 39.9615C18.6917 38.862 18.6917 37.0421 19.7912 35.9426C20.8907 34.8431 22.7106 34.8431 23.8101 35.9426L32.5303 44.6629L52.0182 25.175C53.1177 24.0755 54.9376 24.0755 56.0371 25.175C57.1366 26.2745 57.1366 28.0565 56.0371 29.1939Z" fill="#58BCDB"/>
+    </svg>
+    <p class="created-message">Post Created</p>
+    <button (click)="navigate('/posts/all-posts')" class="custom_button text-white py-2 px-5">
+      OK
+    </button>
+  </div>
+</app-modal>
+<app-modal *ngIf="error && !isSending">
+  <div class="created text-center">
+    <svg width="90" height="90" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M36.8857 0C16.5617 0 0 16.5617 0 36.8857C0 57.2098 16.5617 73.7715 36.8857 73.7715C57.2098 73.7715 73.7715 57.2098 73.7715 36.8857C73.7715 16.5617 57.2098 0 36.8857 0ZM49.2794 45.3695C50.349 46.4392 50.349 48.2097 49.2794 49.2794C48.7261 49.8326 48.0252 50.0908 47.3244 50.0908C46.6236 50.0908 45.9228 49.8326 45.3695 49.2794L36.8857 40.7956L28.402 49.2794C27.8487 49.8326 27.1479 50.0908 26.4471 50.0908C25.7462 50.0908 25.0454 49.8326 24.4921 49.2794C23.4224 48.2097 23.4224 46.4392 24.4921 45.3695L32.9759 36.8857L24.4921 28.402C23.4224 27.3323 23.4224 25.5618 24.4921 24.4921C25.5618 23.4224 27.3323 23.4224 28.402 24.4921L36.8857 32.9759L45.3695 24.4921C46.4392 23.4224 48.2097 23.4224 49.2794 24.4921C50.349 25.5618 50.349 27.3323 49.2794 28.402L40.7956 36.8857L49.2794 45.3695Z" fill="#C646AA"/>
+    </svg>
 
+    <p class="created-message">Uppss Try Later</p>
+    <button (click)="error = undefined" class="custom_button text-white py-2 px-5">
+      OK
+    </button>
+  </div>
+</app-modal>
 <div class="create-form-container">
-  <form >
+  <form #postForm="ngForm" (submit)="onCreatePost()">
     <div class="mb-3 custom-form-group">
       <label for="title">Title messages</label>
       <input
@@ -11,11 +33,18 @@
         class="form-control"
         placeholder="Your post title"
         name="title"
+        #title="ngModel"
         [(ngModel)]="post.title"
         [maxlength]="30"
+        required
       >
       <div class="counter">
         <span>{{ post.title?.length || 0 }}/30</span>
+      </div>
+      <div *ngIf="title.invalid && ( title.touched || title.dirty)" class="mt-1">
+        <span class="input-error">
+          Title is required
+        </span>
       </div>
     </div>
     <div class="mb-3 custom-form-group">
@@ -25,15 +54,26 @@
         id="message"
         class="form-control"
         rows="5"
+        #message="ngModel"
         placeholder="Create message for share with your friends"
         [(ngModel)]="post.message"
         [maxLength]="300"
+        required
       ></textarea>
       <div class="counter">
         <span>{{ post.message?.length || 0 }}/300</span>
       </div>
+      <div *ngIf="message.invalid && ( message.dirty || message.touched )">
+        <span class="input-error">
+          Message is required
+        </span>
+      </div>
     </div>
-    <button class="custom_button py-2 px-4 text-white" type="submit">
+    <button
+      class="custom_button py-2 px-4 text-white"
+      type="submit"
+      [disabled]="postForm.invalid || isSending"
+    >
       SHARE
     </button>
   </form>

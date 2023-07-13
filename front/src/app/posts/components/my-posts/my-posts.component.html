@@ -4,11 +4,9 @@
 
 <app-posts-layout
   *ngIf="!isLoading && !error"
-  [title]="'All Publications'"
+  [title]="'My Publications'"
   [posts]="posts"
-  (onFilter)="filterPosts( $event )"
+  [modeFilter]="'single'"
 ></app-posts-layout>
 
-<div class="error-container" *ngIf="error && !isLoading">
-
-</div>
+<div class="error-container" *ngIf="error && !isLoading"></div>

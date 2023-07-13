@@ -2,11 +2,20 @@
   {{ title }}
 </h1>
 
-<div class="filters-container"></div>
+<div class="filters-container my-4">
+  <app-filters
+    (onWordsChange)="onWordsChange($event)"
+    (onDateChange)="onDateChanged($event)"
+    [mode]="modeFilter"
+  ></app-filters>
+</div>
 
 <div class="row">
-  <div class="col-md-4" *ngFor="let post of posts">
-    <app-post-card [post]="post" ></app-post-card>
+  <div class="col-md-4 my-2" *ngFor="let post of posts">
+    <app-post-card
+      [post]="post"
+      [filters]="filters"
+    ></app-post-card>
   </div>
 </div>
 

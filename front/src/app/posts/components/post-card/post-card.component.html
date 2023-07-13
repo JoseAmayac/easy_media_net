@@ -1,14 +1,10 @@
 <div class="card custom-card">
-  <div class="card-header">
-    {{ post.title || 'Your post title' }}
-  </div>
+  <div class="card-header" [innerHTML]="post.title | highlighter:filters.text:''"></div>
   <div class="card-body">
-    <p class="card-text">
-      {{ post.message || 'Create message for share with your friends' }}
-    </p>
+    <p class="card-text" [innerHTML]="post.message | highlighter:filters.text:''"></p>
   </div>
-  <div class="card-footer py-0 d-flex justify-content-between">
+  <div class="card-footer d-flex justify-content-between align-items-end ">
     <span>{{ post.createdAt|date }}</span>
-    <p class="post-author-name">{{ post.author?.name }}</p>
+    <p class="post-author-name mb-0">{{ post.author?.name }}</p>
   </div>
 </div>
