@@ -1,0 +1,144 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center vh-100">
+    <div class="col-md-5 mx-auto">
+      <div class="form-container px-md-5 px-3 py-3">
+        <img
+          class="img-fluid"
+          src="assets/images/auth_image.png"
+          width="100"
+          alt="Authentication image"
+        />
+        <h3 class="brand-title">Easy Media</h3>
+        <p class="brand-message">Now, share is easy</p>
+        <h5 class="text-white form-title">Sign Up</h5>
+        <form class="mt-3" [formGroup]="registerForm" (submit)="onRegister()">
+          <div class="mb-3 form-group-container">
+            <label>Full Name</label>
+            <input
+              type="text"
+              placeholder="José Amaya"
+              class="custom-form-control"
+              formControlName="name"
+            />
+            <div
+              *ngIf="
+                registerForm.get('name')!.hasError('required') &&
+                (registerForm.get('name')!.dirty ||
+                  registerForm.get('name')!.touched)
+              "
+              class="mt-1"
+            >
+              <span class="input-error">Required field</span>
+            </div>
+          </div>
+          <div class="mb-3 form-group-container">
+            <label>Email</label>
+            <input
+              type="email"
+              placeholder="example@email.com"
+              class="custom-form-control"
+              formControlName="email"
+            />
+            <div
+              *ngIf="
+                registerForm.get('email')!.hasError('required') &&
+                (registerForm.get('email')!.dirty ||
+                  registerForm.get('email')!.touched)
+              "
+              class="mt-1"
+            >
+              <span class="input-error">Required field</span>
+            </div>
+            <div
+              *ngIf="
+                registerForm.get('email')!.hasError('pattern') &&
+                (registerForm.get('email')!.dirty ||
+                  registerForm.get('email')!.touched)
+              "
+              class="mt-1"
+            >
+              <span class="input-error">Please provide a valid email</span>
+            </div>
+          </div>
+          <div class="mb-3 form-group-container">
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="••••••••••••"
+              class="custom-form-control"
+              formControlName="password"
+            />
+            <div
+              *ngIf="
+                registerForm.get('password')!.hasError('required') &&
+                (registerForm.get('password')!.dirty ||
+                  registerForm.get('password')!.touched)
+              "
+              class="mt-1"
+            >
+              <span class="input-error">Required field</span>
+            </div>
+            <div
+              *ngIf="
+                registerForm.get('password')!.hasError('minlength') &&
+                (registerForm.get('password')!.dirty ||
+                  registerForm.get('password')!.touched)
+              "
+              class="mt-1"
+            >
+              <span class="input-error"
+                >Password must contain at least eight character</span
+              >
+            </div>
+          </div>
+          <div class="mb-3 form-group-container">
+            <label>Confirm password</label>
+            <input
+              type="password"
+              placeholder="••••••••••••"
+              class="custom-form-control"
+              formControlName="confirmPassword"
+            />
+            <div
+              *ngIf="
+                registerForm.get('confirmPassword')!.hasError('required') &&
+                (registerForm.get('confirmPassword')!.dirty ||
+                  registerForm.get('confirmPassword')!.touched)
+              "
+              class="mt-1"
+            >
+              <span class="input-error">Required field</span>
+            </div>
+            <div
+              *ngIf="
+                registerForm.get('confirmPassword')!.hasError('mismatch') &&
+                (registerForm.get('confirmPassword')!.dirty ||
+                  registerForm.get('confirmPassword')!.touched)
+              "
+              class="mt-1"
+            >
+              <span class="input-error">Passwords must match</span>
+            </div>
+          </div>
+
+          <button
+            class="auth_button d-block mx-auto"
+            type="submit"
+            [disabled]="registerForm.invalid || isSending"
+          >
+            SIGN UP
+          </button>
+
+          <div *ngIf="error" class="text-center mt-1">
+            <span class="text-danger">{{ error }}</span>
+          </div>
+
+          <span class="navigation-text d-block mt-3"
+            >Already have an account?
+            <a class="link" routerLink="/auth/login">Login</a></span
+          >
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
