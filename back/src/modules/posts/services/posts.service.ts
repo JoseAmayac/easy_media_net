@@ -9,7 +9,7 @@ export const createPost = ( post: PostCreation ) => {
 }
 
 export const getAllPosts = () => {
-    return prisma.post.findMany();
+    return prisma.post.findMany({ include: { author: true }});
 }
 
 export const getUserPosts = ( authorId: number ) => {
@@ -21,8 +21,7 @@ export const filterPosts = ( filters: PostFilter ) => {
     if ( filters.text ) {
         queryFilters.push({
             title: {
-                contains: filters.text,
-                mode: "insensitive"
+                contains: filters.text
             }
         });
     }

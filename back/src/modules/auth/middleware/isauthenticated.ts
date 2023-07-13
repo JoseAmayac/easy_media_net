@@ -8,7 +8,6 @@ export const isAuthenticated = async (req: AuthRequest, res: Response, next: Nex
     const header = req.headers.authorization;
     if ( !header ) return unAuthorizedResponse( res );
     const token = header.split(' ')[1];
-    console.log( token );
     
     try {
         const payload = jwt.validateToken( token );
