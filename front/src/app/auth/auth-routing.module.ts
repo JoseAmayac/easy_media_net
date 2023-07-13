@@ -19,6 +19,11 @@ const routes: Routes = [
         component: RegisterComponent,
         data: { currentChild: 'register' }
       },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'login'
+      }
     ]
   },
   {

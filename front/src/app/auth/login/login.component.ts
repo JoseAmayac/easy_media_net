@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -34,6 +34,7 @@ export class LoginComponent {
 
   handleCorrectLogin( _: any ){
     this.isSending = false;
+    this.router.navigateByUrl('/posts/all-posts');
   }
   handleErrorLogin( err: HttpErrorResponse ){
     this.isSending = false;

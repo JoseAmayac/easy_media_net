@@ -5,8 +5,11 @@ import { JwtPayload } from "jsonwebtoken";
 import { AuthRequest } from "../interfaces/authrequest";
 
 export const isAuthenticated = async (req: AuthRequest, res: Response, next: NextFunction) => {
-    const token = req.headers.authorization;
-    if ( !token ) return unAuthorizedResponse( res );
+    const header = req.headers.authorization;
+    if ( !header ) return unAuthorizedResponse( res );
+    const token = header.split(' ')[1];
+    console.log( token );
+    
     try {
         const payload = jwt.validateToken( token );
         const user = await findUserById( (payload as JwtPayload).id );

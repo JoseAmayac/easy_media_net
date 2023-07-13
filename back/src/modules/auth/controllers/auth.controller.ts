@@ -4,6 +4,7 @@ import { comparePasswords, hashPassword } from "../utils/bcrypt";
 import jwt from '../../shared/utils/jwt';
 import { UserModel } from "../interfaces/usermodel";
 import { UserCreation } from "../interfaces/usercreation";
+import { AuthRequest } from "../interfaces/authrequest";
 
 export const loginUser = async(req: Request, res: Response, next: NextFunction ) => {
     const { email, password } = req.body;
@@ -36,6 +37,11 @@ export const registerUser = async(req: Request, res: Response, next: NextFunctio
     } catch (error) {
         next( error );
     }
+}
+
+export const me = async(req: AuthRequest, res: Response) => {
+    const user = req.user!;
+    return createAuthenticationResponse(res, user);
 }
 
 const createAuthenticationResponse = ( res: Response, user: UserModel, status: number = 200 ) => {

@@ -1,0 +1,21 @@
+.page-title{
+  font-weight: bolder;
+  font-size: 3em;
+}
+
+.empty-container{
+  width: 100%;
+  height: calc( 90vh - 3em );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .content{
+    .empty-message{
+      color: #333333B2;
+      font-size: 25px;
+      text-align: center;
+      margin-top: 20px;
+    }
+  }
+}

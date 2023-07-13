@@ -1,0 +1,50 @@
+.nav{
+  height: 3em;
+  position: relative;
+
+  .brand-container{
+    img{
+      width: 2em;
+      height: 2em;
+      border-radius: 50%;
+    }
+
+    h5{
+      margin-bottom: 0;
+      font-weight: 700;
+      font-size: 17px;
+    }
+  }
+
+  .menu-content{
+    position: absolute;
+    right: 0;
+    top: 3.01em;
+    background-color: white;
+    border-radius: 15px;
+    padding: 0px;
+    overflow: hidden;
+
+    .user{
+      border-bottom: 1px solid #DDDADA;
+
+      &__name{
+        margin-bottom: 0;
+        color: #0E2248;
+        font-weight: bold;
+        font-size: 18px;
+        text-align: left;
+      }
+    }
+
+    .menu-options{
+      .menu-item{
+        cursor: pointer;
+        &:hover{
+          background-color: #DDDADA;
+        }
+      }
+    }
+  }
+
+}
