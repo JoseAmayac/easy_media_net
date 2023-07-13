@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center vh-100">
+    <div class="col-md-5 mx-auto">
+      <div class="form-container px-md-5 px-3 py-3">
+        <img
+          class="img-fluid brand-img"
+          src="assets/images/auth_image.png"
+          [ngClass]="{'full-width': currentChild === 'login'}"
+          alt="Authentication image"
+        />
+        <h3 class="brand-title">Easy Media</h3>
+        <p class="brand-message">Now, share is easy</p>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

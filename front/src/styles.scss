@@ -2,3 +2,98 @@
 *{
   font-family: 'Lato', sans-serif;
 }
+
+
+
+.form-container{
+  background-color: #9B8ADB;
+  text-align: center;
+
+  .brand-img{
+    width: 100px;
+
+    &.full-width{
+      width: 80%;
+    }
+  }
+
+  .brand-title{
+    color: white;
+    font-weight: bold;
+    font-size: 2.3em;
+  }
+
+  .brand-message{
+    color: #48E3BE;
+    font-size: 1.2em;
+  }
+
+  .form-title{
+    font-size: 1.5em;
+    font-weight: 400;
+  }
+
+  .form-group-container{
+    text-align: start;
+
+    label{
+      color: #0E2248;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 18px;
+    }
+
+    .custom-form-control{
+      display: block;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid #EAEAEA;
+      background: none;
+      width: 100%;
+      color: white;
+      font-size: 18px;
+
+      &::placeholder{
+        color: #B7B7B7;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 18px;
+        letter-spacing: 0em;
+        text-align: left;
+
+      }
+    }
+
+    .input-error{
+      color: #FE4B4B;
+      font-size: 12px;
+    }
+  }
+
+  .auth_button{
+    background: linear-gradient(to right, #58BBDB , #C645A9);
+    border-radius: 40px;
+    width: 80%;
+    color: white;
+    font-weight: 600;
+    font-size: 24px;
+    box-sizing: border-box;
+    border: none;
+    margin-top: 50px;
+
+    &:disabled {
+      opacity: .6;
+      user-select: none;
+    }
+  }
+
+  .navigation-text{
+    font-size: 12px;
+    color: #B7B7B7;
+    text-align: right;
+
+    .link{
+      color: #48E3BE;
+    }
+  }
+}
