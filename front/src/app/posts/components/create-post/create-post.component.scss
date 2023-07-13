@@ -1,0 +1,48 @@
+.page-title{
+  font-weight: bolder;
+  font-size: 3em;
+}
+
+.custom-form-group{
+  label{
+    color: #0E2248;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .form-control{
+    border-radius: 20px;
+    font-size: 18px;
+    color: #474747;
+
+    &::placeholder{
+      color: #B7B7B7;
+      font-size: 18px;
+    }
+
+    &:focus{
+      border-color: #474747;
+      box-shadow: 0 0 0 0.15rem rgba(68, 78, 93, 0.25);
+    }
+  }
+
+  .counter{
+    text-align: end;
+    color: #5F5E5E;
+  }
+}
+
+.custom_button{
+  border-radius: 30px;
+  background: linear-gradient(to right, #58BBDB, #C645A9);
+  border: none;
+  display: block;
+  margin-left: auto;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}

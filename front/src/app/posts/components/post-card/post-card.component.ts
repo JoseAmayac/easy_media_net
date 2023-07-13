@@ -7,5 +7,5 @@ import { Post } from '../../interfaces/post';
   styleUrls: ['./post-card.component.scss']
 })
 export class PostCardComponent {
-  @Input() post!: Post;
+  @Input() post!: Post | Partial<Post>;
 }

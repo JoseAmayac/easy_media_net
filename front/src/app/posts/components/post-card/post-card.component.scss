@@ -1,0 +1,26 @@
+.custom-card{
+  border-radius: 20px;
+  overflow: hidden;
+  .card-header{
+    background-color: #58BCDB;
+    color: #EBEBEB;
+    font-size: 19px;
+    font-weight: 700;
+  }
+
+  .card-body,.card-footer{
+    background-color: #5F5E5E;
+    color: white;
+    border: none;
+    color: #EBEBEB;
+    font-weight: 300;
+    font-size: 18px;
+  }
+
+  .card-footer{
+    .post-author-name{
+      font-size: 18px;
+      font-weight: 700;
+    }
+  }
+}

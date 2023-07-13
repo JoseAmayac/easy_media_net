@@ -1,0 +1,48 @@
+<h1 class="text-center text-white page-title mt-3">
+  Create message
+</h1>
+
+<div class="create-form-container">
+  <form >
+    <div class="mb-3 custom-form-group">
+      <label for="title">Title messages</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Your post title"
+        name="title"
+        [(ngModel)]="post.title"
+        [maxlength]="30"
+      >
+      <div class="counter">
+        <span>{{ post.title?.length || 0 }}/30</span>
+      </div>
+    </div>
+    <div class="mb-3 custom-form-group">
+      <label for="message">Messages</label>
+      <textarea
+        name="message"
+        id="message"
+        class="form-control"
+        rows="5"
+        placeholder="Create message for share with your friends"
+        [(ngModel)]="post.message"
+        [maxLength]="300"
+      ></textarea>
+      <div class="counter">
+        <span>{{ post.message?.length || 0 }}/300</span>
+      </div>
+    </div>
+    <button class="custom_button py-2 px-4 text-white" type="submit">
+      SHARE
+    </button>
+  </form>
+</div>
+
+<div class="post-preview-container">
+  <div class="row">
+    <div class="col-md-4">
+      <app-post-card [post]="post"></app-post-card>
+    </div>
+  </div>
+</div>

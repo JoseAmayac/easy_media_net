@@ -6,6 +6,8 @@ import { PostCardComponent } from './components/post-card/post-card.component';
 import { PostsDashboardComponent } from './screens/posts-dashboard/posts-dashboard.component';
 import { SharedModule } from '../shared/shared.module';
 import { PostsLayoutComponent } from './components/posts-layout/posts-layout.component';
+import { CreatePostComponent } from './components/create-post/create-post.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -14,12 +16,14 @@ import { PostsLayoutComponent } from './components/posts-layout/posts-layout.com
     AllPostsComponent,
     PostCardComponent,
     PostsDashboardComponent,
-    PostsLayoutComponent
+    PostsLayoutComponent,
+    CreatePostComponent
   ],
   imports: [
     CommonModule,
     PostsRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class PostsModule { }

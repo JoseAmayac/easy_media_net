@@ -2,6 +2,8 @@
   {{ title }}
 </h1>
 
+<div class="filters-container"></div>
+
 <div class="row">
   <div class="col-md-4" *ngFor="let post of posts">
     <app-post-card [post]="post" ></app-post-card>
